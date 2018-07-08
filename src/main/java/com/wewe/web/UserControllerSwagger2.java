@@ -1,6 +1,6 @@
 package com.wewe.web;
 
-import com.wewe.entity.User;
+import com.wewe.domain.User;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;

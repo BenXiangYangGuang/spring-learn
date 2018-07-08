@@ -1,6 +1,6 @@
 package com.wewe.web;
 
-import com.wewe.entity.User;
+import com.wewe.domain.User;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;

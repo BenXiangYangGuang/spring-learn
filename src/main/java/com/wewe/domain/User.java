@@ -1,4 +1,4 @@
-package com.wewe.entity;
+package com.wewe.domain;
 
 import lombok.Data;
 
