@@ -10,6 +10,7 @@
 		<module>security</module>
 		<module>druidstarterDemo</module>
         <module>data-connector</module>
+        <module>mongodbExample</module>
     </modules>
 	<packaging>pom</packaging>
 
