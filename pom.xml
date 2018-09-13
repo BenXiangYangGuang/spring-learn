@@ -11,7 +11,11 @@
 		<module>druidstarterDemo</module>
         <module>data-connector</module>
         <module>mongodbExample</module>
-    </modules>
+		<module>myBatisExample</module>
+        <module>ehCacheExample</module>
+        <module>logExample</module>
+		<module>aopExample</module>
+	</modules>
 	<packaging>pom</packaging>
 
 	<name>spring-learn</name>

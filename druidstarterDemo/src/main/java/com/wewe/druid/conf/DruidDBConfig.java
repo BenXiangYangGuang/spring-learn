@@ -1,8 +1,7 @@
 package com.wewe.druid.conf;
 
 import com.alibaba.druid.pool.DruidDataSource;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +12,7 @@ import java.sql.SQLException;
 
 @Configuration
 public class DruidDBConfig {
-    private Logger logger = LoggerFactory.getLogger(DruidDBConfig.class);
+    private static Logger logger = Logger.getLogger(DruidDBConfig.class);
 
     @Value("${spring.datasource.url}")
     private String dbUrl;
