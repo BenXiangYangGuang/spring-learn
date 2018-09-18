@@ -15,7 +15,8 @@
         <module>ehCacheExample</module>
         <module>logExample</module>
 		<module>aopExample</module>
-	</modules>
+        <module>mongodbDriverExample</module>
+    </modules>
 	<packaging>pom</packaging>
 
 	<name>spring-learn</name>
