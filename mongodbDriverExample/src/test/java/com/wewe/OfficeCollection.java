@@ -1,7 +1,6 @@
 package com.wewe;
 
-import com.mongodb.Block;
-import com.mongodb.MongoClient;
+import com.mongodb.*;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
@@ -36,11 +35,12 @@ public class OfficeCollection {
     @Before
     public void createDatabaseColletionTest(){
 
-        MongoClient mongoClient = new MongoClient( "172.24.4.149" , 27017 );
+        ServerAddress serverAddress = new ServerAddress("172.24.4.149", 27017);
 
-        MongoDatabase database = mongoClient.getDatabase("myDb");
-
-        collection = database.getCollection("test");
+        MongoCredential credential = MongoCredential.createCredential("super", "phm","123qweQWE".toCharArray());
+        MongoClient mongoClient = new MongoClient(serverAddress, Arrays.asList(credential));
+        MongoDatabase database = mongoClient.getDatabase("phm");
+        collection = database.getCollection("zhangpanweitest");
     }
 
     /**
