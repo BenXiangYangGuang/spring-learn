@@ -16,6 +16,7 @@
         <module>logExample</module>
 		<module>aopExample</module>
         <module>mongodbDriverExample</module>
+        <module>mockitoExample</module>
     </modules>
 	<packaging>pom</packaging>
 
