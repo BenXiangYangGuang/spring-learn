@@ -20,6 +20,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @Date:2018/6/6 20:15
  * @Description:
  * @Refer To:
+ *
+ * 单独的spring-boot测试
+ * https://fanlychie.github.io/post/spring-boot-testing.html#5-Spring-Data-JPA-%E6%B5%8B%E8%AF%95
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest

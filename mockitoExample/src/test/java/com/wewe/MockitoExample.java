@@ -13,6 +13,7 @@ import static org.mockito.Mockito.*;
  * Author: fei2
  * Date:  18-10-23 下午5:24
  * Description:mockito 测试简单使用
+ * 创建mock对象不能对final，Anonymous ，primitive类进行mock
  * Refer To:
  *  https://segmentfault.com/a/1190000006746409
  *  http://liuzhijun.iteye.com/blog/1512780
