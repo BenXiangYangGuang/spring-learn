@@ -16,7 +16,7 @@ import org.springframework.context.annotation.ComponentScan;
  * 参考:https://www.cnblogs.com/telwanggs/p/7484854.html
  */
 @SpringBootApplication
-@ComponentScan(value = "com.wewe")
+//@ComponentScan(value = "com.wewe")
 @ServletComponentScan(value = "com.wewe")
 public class SpringdemoApplication {
 
