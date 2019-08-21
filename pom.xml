@@ -17,6 +17,7 @@
 		<module>aopExample</module>
         <module>mongodbDriverExample</module>
         <module>mockitoExample</module>
+        <module>deferred-result-example</module>
     </modules>
 	<packaging>pom</packaging>
 

@@ -40,11 +40,13 @@ public class JDBCTestPG {
         }
 
     }
+/*
 
     public static void main(String[] args) {
         DruidDao druidDao = new DruidDao();
         String sql = "INSERT INTO \"public\".\"pi_dl_binhai\" (\"tag_name\", \"tag_value\", \"is_good\", \"pi_ts\", \"send_ts\", \"load_time\") VALUES ('13', '11.0000000000', 't', '2018-12-12 18:55:33', '2018-12-12 18:55:36', '2018-12-10 18:55:39')";
         druidDao.insert(sql);
     }
+*/
 
 }
