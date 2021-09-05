@@ -14,8 +14,9 @@ public class HelloController {
 
     private static Logger log = Logger.getLogger(HelloController.class);
 
-    @RequestMapping(value = "/hello", method = RequestMethod.GET)
-    public String hello(@RequestParam String name) {
-        return "Hello " + name;
+    // 获取请求参数实例化
+    @RequestMapping(value = "/hello", method = RequestMethod.POST)
+    public String hello(@RequestBody Student student) {
+        return "Hello " + student.getName();
     }
 }

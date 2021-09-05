@@ -3,16 +3,22 @@ package com.wewe.aspect;
 import com.mongodb.BasicDBObject;
 import org.apache.log4j.Logger;
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.reflect.CodeSignature;
+import org.aspectj.lang.reflect.MethodSignature;
+import org.springframework.core.DefaultParameterNameDiscoverer;
+import org.springframework.core.ParameterNameDiscoverer;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -63,8 +69,29 @@ public class WebLogAspect {
         r.append("parameters", request.getParameterMap());
         r.append("classMethod", joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName());
         r.append("args", Arrays.toString(joinPoint.getArgs()));
+        // 获取 参数名称、类型、值
+        r.append("nameAndValue:",getNameAndValue(joinPoint));
         return r;
     }
+    /**
+     * 获取参数Map集合
+     * @param joinPoint
+     * @return
+     */
+    Map<String, Object> getNameAndValue(JoinPoint joinPoint) {
+        Map<String, Object> param = new HashMap<>();
+        // 获取参数值
+        Object[] paramValues = joinPoint.getArgs();
+        // 获取参数名称
+        String[] paramNames = ((CodeSignature)joinPoint.getSignature()).getParameterNames();
+        // 获取参数类型
+        Class[] paramTypes = ((CodeSignature)joinPoint.getSignature()).getParameterTypes();
+        for (int i = 0; i < paramNames.length; i++) {
+            param.put(paramNames[i], paramValues[i]);
+        }
+        return param;
+    }
+
 
     /**
      * 获取头信息
