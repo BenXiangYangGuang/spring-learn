@@ -18,7 +18,8 @@
         <module>mongodbDriverExample</module>
         <module>mockitoExample</module>
         <module>deferred-result-example</module>
-    </modules>
+		<module>transition-example</module>
+	</modules>
 	<packaging>pom</packaging>
 
 	<name>spring-learn</name>

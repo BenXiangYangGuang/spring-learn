@@ -44,9 +44,9 @@ public class UserRepositoryTests {
         }
 
         // 删除这条数据，并select验证
-        userMapper.delete(u.getId());
-        u = userMapper.findByName("AAA");
-        Assert.assertEquals(null, u);
+        // userMapper.delete(u.getId());
+        // u = userMapper.findByName("AAA");
+        // Assert.assertEquals(null, u);
 
     }
 
