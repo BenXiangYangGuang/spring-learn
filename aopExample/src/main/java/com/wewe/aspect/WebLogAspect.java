@@ -4,10 +4,7 @@ import com.mongodb.BasicDBObject;
 import org.apache.log4j.Logger;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.AfterReturning;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.CodeSignature;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.core.DefaultParameterNameDiscoverer;
@@ -27,6 +24,8 @@ import java.util.Map;
 /**
  * Author: fei2
  * Date:  18-9-13 上午11:44
+ * 鉴权参考：
+ * https://www.jianshu.com/p/5e37c63a1f5f
  * Description: 请求切面
  * Refer To:
  */
@@ -41,19 +40,25 @@ public class WebLogAspect {
     @Pointcut("execution(public * com.wewe.controller..*.*(..))")
     public void webLog(){}
 
-    @Before("webLog()")
-    public void doBefore(JoinPoint joinPoint) throws Throwable {
+    @Around("webLog()")
+    public Object around(ProceedingJoinPoint point) throws Throwable {
         // 接收到请求，记录请求内容
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
 
         // 获取要记录的日志内容
-        BasicDBObject logInfo = getBasicDBObject(request, joinPoint);
-        log.info(logInfo);
+        // BasicDBObject logInfo = getBasicDBObject(request, joinPoint);
+        // log.info(logInfo);
+        getNameAndValue(point);
+        Method method = ((MethodSignature)point.getSignature()).getMethod();
 
+        if(true){
+            return "error message return";
+        }
+        return point.proceed();
     }
 
-    private BasicDBObject getBasicDBObject(HttpServletRequest request, JoinPoint joinPoint) {
+    private BasicDBObject getBasicDBObject(HttpServletRequest request, ProceedingJoinPoint joinPoint) {
         // 基本信息
         BasicDBObject r = new BasicDBObject();
         r.append("requestURL", request.getRequestURL().toString());
@@ -78,7 +83,7 @@ public class WebLogAspect {
      * @param joinPoint
      * @return
      */
-    Map<String, Object> getNameAndValue(JoinPoint joinPoint) {
+    Map<String, Object> getNameAndValue(ProceedingJoinPoint joinPoint) {
         Map<String, Object> param = new HashMap<>();
         // 获取参数值
         Object[] paramValues = joinPoint.getArgs();

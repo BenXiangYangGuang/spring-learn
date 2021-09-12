@@ -16,7 +16,9 @@ public class HelloController {
 
     // 获取请求参数实例化
     @RequestMapping(value = "/hello", method = RequestMethod.POST)
-    public String hello(@RequestBody Student student) {
-        return "Hello " + student.getName();
+    public Object hello(@RequestBody Student student) {
+        System.out.println("ok");
+        String ok = "okreturn";
+        return ((Object) ok);
     }
 }
